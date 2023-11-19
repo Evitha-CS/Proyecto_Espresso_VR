@@ -37,7 +37,7 @@ public class Cliente : MonoBehaviour
         }
         else
         {
-            Debug.Log("Entrega fallida. El cliente esperaba: " + objetoCorrecto);
+            Debug.Log("Entrega fallida. El cliente esperaba: " + objetoCorrecto + ", pero recibió: " + objetoEntregado);
         }
 
         // Después de la entrega, el cliente elige otro objeto

@@ -16,6 +16,8 @@ public class GrabObject : MonoBehaviour
     private Collider objetoInteractuableCollider;
     private string nombreObjeto;
     public Cliente cliente;
+    public GameObject referenciaComida;
+    private GameObject prefabObjeto = null;
 
     void Update()
     {
@@ -53,21 +55,18 @@ public class GrabObject : MonoBehaviour
             if (objetoInteractuableTransform != null)
             {
 
-                Debug.Log("Estoy en basurero y soy " + objetoInteractuableTransform);
-                
+                StartCoroutine(Respawn());
                 Destroy(objetoInteractuableTransform.gameObject);
-                
                 punteroImage.SetActive(true);
                 RestablecerEstado();
                 RestablecerReferencias();
                 cliente.EntregarObjeto(nombreObjeto);
                 
-            }else{
-                Debug.Log("Parece que aquí no hay nada.");
+            }
         }
-        }
-
     }
+
+    
 
     void OnTriggerExit(Collider other)
     {
@@ -87,12 +86,10 @@ public class GrabObject : MonoBehaviour
 
     void AgarrarObjeto()
     {
-        // Lógica para agarrar el objeto después de la carga completa
-        //Debug.Log("Objeto agarrado!");
         objetoInteractuableTransform.SetParent(transform); // Hacer que el objeto interactuable sea hijo del objeto original
-        Debug.Log("Has agarrado un " + objetoInteractuableTransform);
-        nombreObjeto = GetHijo();
-        Debug.Log("Tu hijo es " + nombreObjeto);
+        nombreObjeto = objetoInteractuableTransform.name;
+        Debug.Log("Has agarrado un " + nombreObjeto);
+
     }
     void RestablecerEstado()
     {
@@ -122,8 +119,48 @@ public class GrabObject : MonoBehaviour
             return "té";
         return null;
     }
+
+    //Esperar y respawnear objetos
+IEnumerator Respawn()
+{
+    Debug.Log("Esperando para respawnear: " + nombreObjeto);
+    yield return new WaitForSeconds(1);
+
+    GameObject nuevoObjeto = null;
+
+    switch (nombreObjeto)
+    {
+        case "croissant":
+            prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/croissant");
+            nuevoObjeto = Instantiate(prefabObjeto, new Vector3(7.961983f, 1.282f, -1.3f), Quaternion.identity, referenciaComida.transform);
+            break;
+
+        case "donut":
+            prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/donut");
+            nuevoObjeto = Instantiate(prefabObjeto, new Vector3(7.122385f, 1.185131f, -3.023491f), Quaternion.identity, referenciaComida.transform);
+            break;
+
+        case "cupcake":
+            prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/cupcake");
+            nuevoObjeto = Instantiate(prefabObjeto, new Vector3(7.554285f, 1.185016f, -3.023879f), Quaternion.identity, referenciaComida.transform);
+            break;
+
+        case "té":
+            prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/te");
+            nuevoObjeto = Instantiate(prefabObjeto, new Vector3(6.679826f, 1.285f, -1.342f), Quaternion.identity, referenciaComida.transform);
+            break;
+    }
+
+    if (nuevoObjeto != null)
+    {
+        Debug.Log("Respawneando " + prefabObjeto.name);
+        // Instanciar el nuevo objeto con la posición y rotación almacenadas
+        //GameObject nuevoObjeto = Instantiate(prefabObjeto, new Vector3(1f, 1f, 0f), Quaternion.identity, referenciaComida.transform);
+        nuevoObjeto.name = nombreObjeto;
+    }
+    else
+    {
+        Debug.LogError("No se pudo instanciar el objeto con el nombre " + nombreObjeto);
+    }
 }
-
-    
-       
-
+}

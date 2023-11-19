@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -175,7 +175,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106818013}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.4754839, y: 0.18763483, z: 0.30244482}
@@ -347,7 +347,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162708038}
   m_LocalRotation: {x: 0, y: -0.9976545, z: 0, w: 0.06845079}
-  m_LocalPosition: {x: 9.06, y: 1.61, z: 5.052}
+  m_LocalPosition: {x: 7.577, y: 1.506, z: -2.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -738,6 +738,8 @@ MonoBehaviour:
   cargaImage: {fileID: 653192287}
   punteroImage: {fileID: 195724750}
   tiempoCarga: 3
+  cliente: {fileID: 438716017}
+  referenciaComida: {fileID: 1643127306}
 --- !u!65 &330585553
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -749,8 +751,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0, y: 0, z: 1}
-  m_Center: {x: 0, y: 0, z: 0.8}
+  m_Size: {x: 0, y: 0, z: 2}
+  m_Center: {x: 0, y: 0, z: 1.25}
 --- !u!1 &335784806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,6 +1124,7 @@ GameObject:
   - component: {fileID: 438716014}
   - component: {fileID: 438716013}
   - component: {fileID: 438716016}
+  - component: {fileID: 438716017}
   m_Layer: 0
   m_Name: Cliente
   m_TagString: basurero
@@ -1197,6 +1200,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &438716017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438716012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c5e966d9307ef4b95f07eaf9230b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objetoCorrecto: 
 --- !u!1 &481901579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1992,7 +2008,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1080854471979460, guid: 0683ba921c1a542ea8dae92b271c1e18, type: 3}
       propertyPath: m_Name
-      value: PW_doughnut_pink
+      value: donut
       objectReference: {fileID: 0}
     - target: {fileID: 1080854471979460, guid: 0683ba921c1a542ea8dae92b271c1e18, type: 3}
       propertyPath: m_TagString
@@ -2065,7 +2081,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228834719}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.18968742, y: 0.14996517, z: 0.1985627}
@@ -2322,7 +2338,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619875898}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.35194683, y: 0.13436294, z: 0.46398818}
@@ -2371,7 +2387,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1921254186118406, guid: 5e6527792754e41d48aec14c1dafd8af, type: 3}
       propertyPath: m_Name
-      value: PW_cupcake_chocolattechips
+      value: cupcake
       objectReference: {fileID: 0}
     - target: {fileID: 1921254186118406, guid: 5e6527792754e41d48aec14c1dafd8af, type: 3}
       propertyPath: m_TagString
@@ -2759,7 +2775,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1865924051858562, guid: b4ed931ca91f741b6a600b8a20639eed, type: 3}
       propertyPath: m_Name
-      value: PW_croissant_toserve
+      value: croissant
       objectReference: {fileID: 0}
     - target: {fileID: 1865924051858562, guid: b4ed931ca91f741b6a600b8a20639eed, type: 3}
       propertyPath: m_TagString
@@ -2824,7 +2840,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1782192298896088, guid: 806ac5fcbcc474da28cf79b0a4df73a1, type: 3}
       propertyPath: m_Name
-      value: PW_tea_cup02
+      value: te
       objectReference: {fileID: 0}
     - target: {fileID: 1782192298896088, guid: 806ac5fcbcc474da28cf79b0a4df73a1, type: 3}
       propertyPath: m_TagString
@@ -2914,7 +2930,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079975031}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.10260426, z: 0.29279983}
