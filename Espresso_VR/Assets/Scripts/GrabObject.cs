@@ -11,6 +11,7 @@ public class GrabObject : MonoBehaviour
     public float tiempoCarga = 2f;
     private float tiempoTranscurrido = 0f;
     private bool objetoTocado = false;
+    private bool objetoAgarrado = false;
     private Transform objetoInteractuableTransform;
     private Collider objetoInteractuableCollider;
 
@@ -28,6 +29,7 @@ public class GrabObject : MonoBehaviour
                 AgarrarObjeto();
                 punteroImage.SetActive(false);
                 cargaImage.fillAmount = 0f;
+                objetoAgarrado = true;
             }
             
         }
@@ -35,7 +37,7 @@ public class GrabObject : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag("interactable") && !objetoTocado) // Verificar si el otro objeto tiene el tag "interactable"
+        if (other.CompareTag("interactable") && (!objetoTocado || !objetoAgarrado)) // Verificar si el otro objeto tiene el tag "interactable"
         {
             objetoInteractuableTransform = other.transform; // Almacenar la referencia al objeto interactuable y su collider
             objetoInteractuableCollider = other.GetComponent<Collider>();
@@ -46,31 +48,35 @@ public class GrabObject : MonoBehaviour
         if (other.CompareTag("basurero"))
         {
         
+            if (objetoInteractuableTransform != null)
+            {
 
-        if (objetoInteractuableTransform != null)
-        {
-
-            Debug.Log("Estoy en basurero y soy " + objetoInteractuableTransform);
-            Destroy(objetoInteractuableTransform.gameObject);
-            punteroImage.SetActive(true);
-            RestablecerEstado();
-            RestablecerReferencias();
-            
-        }else{
-            Debug.Log("Parece que aquí no hay nada.");
+                Debug.Log("Estoy en basurero y soy " + objetoInteractuableTransform);
+                Destroy(objetoInteractuableTransform.gameObject);
+                punteroImage.SetActive(true);
+                RestablecerEstado();
+                RestablecerReferencias();
+                
+            }else{
+                Debug.Log("Parece que aquí no hay nada.");
         }
         }
 
     }
-/*
+
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("interactable"))
         {
-            // Restablecer el estado si se deja de colisionar con el objeto interactuable
-            RestablecerEstado();
+            if(!objetoAgarrado){
+                // Restablecer el estado si se deja de colisionar con el objeto interactuable
+                RestablecerEstado();
+                RestablecerReferencias();
+            }
+            objetoTocado = false;
         }
-    }*/
+        
+    }
 
     void AgarrarObjeto()
     {
@@ -85,6 +91,7 @@ public class GrabObject : MonoBehaviour
         Debug.Log("RESTABLECIENDO ESTADOS!");
 
         objetoTocado = false;
+        objetoAgarrado = false;
         tiempoTranscurrido = 0f;
         cargaImage.fillAmount = 0f;
     }
