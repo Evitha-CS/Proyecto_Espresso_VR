@@ -14,7 +14,7 @@ public class Cliente : MonoBehaviour
     void ElegirObjeto()
     {
         // Lista de posibles objetos que el cliente puede elegir
-        string[] objetosDisponibles = { "donut", "té", "cupcake", "croissant" };
+        string[] objetosDisponibles = { "donut", "te", "cupcake", "croissant" };
 
         // Elegir un objeto aleatorio de la lista
         int indiceObjeto = Random.Range(0, objetosDisponibles.Length);

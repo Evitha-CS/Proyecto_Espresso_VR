@@ -7,6 +7,7 @@ TagManager:
   - interactable
   - Fluid
   - basurero
+  - cliente
   layers:
   - Default
   - TransparentFX
