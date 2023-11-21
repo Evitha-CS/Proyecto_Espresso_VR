@@ -10,11 +10,13 @@ public class GrabObject : MonoBehaviour
     public GameObject punteroImage;
     public float tiempoCarga = 2f;
     public float tiempoRestanteEliminar = 3f;
+    public float tiempoRestanteEntregar = 1f;
     private float tiempoTranscurrido = 0f;
     private float tiempoTranscurridoEliminar = 0f;
     private bool objetoTocado = false;
     private bool objetoAgarrado = false;
     private bool objetoAEliminar = false;
+    private bool objetoAEntregar = false;
     private Transform objetoInteractuableTransform;
     private Collider objetoInteractuableCollider;
     private string nombreObjeto;
@@ -41,7 +43,9 @@ public class GrabObject : MonoBehaviour
                 objetoAgarrado = true;
             }
 
-        }else{
+        }
+        else
+        {
             punteroImage.SetActive(true);
         }
 
@@ -62,11 +66,33 @@ public class GrabObject : MonoBehaviour
             }
         }
 
+        if (objetoAEntregar)
+        {
+
+            tiempoTranscurridoEliminar += Time.deltaTime;
+            punteroImage.SetActive(false);
+            cargaImage.fillAmount = tiempoTranscurridoEliminar / tiempoRestanteEntregar;
+            //Debug.Log("Eliminando Objeto");
+
+            if (tiempoTranscurridoEliminar >= tiempoRestanteEntregar)
+            {
+                StartCoroutine(Respawn());
+                Destroy(objetoInteractuableTransform.gameObject);
+                punteroImage.SetActive(true);
+                RestablecerEstado();
+                RestablecerReferencias();
+                cliente.EntregarObjeto(nombreObjeto);
+                objetoAEntregar = false;
+            }
+
+
+
+        }
     }
     void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag("interactable") && (!objetoTocado || !objetoAgarrado)) // Verificar si el otro objeto tiene el tag "interactable"
+        if (other.CompareTag("interactable") && !objetoAgarrado && objetoInteractuableTransform == null) // Verificar si el otro objeto tiene el tag "interactable"
         {
             objetoInteractuableTransform = other.transform; // Almacenar la referencia al objeto interactuable y su collider
             objetoInteractuableCollider = other.GetComponent<Collider>();
@@ -81,19 +107,12 @@ public class GrabObject : MonoBehaviour
                 objetoAEliminar = true;
             }
         }
-        if (other.CompareTag("cliente"))
+        if (other.CompareTag("cliente") && (!objetoAEntregar))
         {
 
             if (objetoInteractuableTransform != null)
             {
-
-                StartCoroutine(Respawn());
-                Destroy(objetoInteractuableTransform.gameObject);
-                punteroImage.SetActive(true);
-                RestablecerEstado();
-                RestablecerReferencias();
-                cliente.EntregarObjeto(nombreObjeto);
-
+                objetoAEntregar = true;
             }
         }
     }
@@ -119,6 +138,23 @@ public class GrabObject : MonoBehaviour
             objetoAEliminar = false;
 
             if (!objetoAEliminar)
+            {
+                punteroImage.SetActive(true);
+                tiempoTranscurrido = 0f;
+                cargaImage.fillAmount = 0f;
+                tiempoTranscurridoEliminar = 0f;
+
+            }
+            objetoTocado = false;
+
+        }
+
+        if (other.CompareTag("cliente"))
+        {
+            // Restablecer el estado si se deja de colisionar con el objeto basurero
+            objetoAEntregar = false;
+
+            if (!objetoAEntregar)
             {
                 punteroImage.SetActive(true);
                 tiempoTranscurrido = 0f;

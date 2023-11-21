@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162708038}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ffa2d8cff6bd4bf4482c4f36385cd569, type: 3}
   m_Name: 
@@ -789,7 +789,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da89e02e77a0c37428563bebaf4d38d1, type: 3}
   m_Name: 
@@ -824,6 +824,7 @@ MonoBehaviour:
   punteroImage: {fileID: 195724750}
   tiempoCarga: 2
   tiempoRestanteEliminar: 3
+  tiempoRestanteEntregar: 1
   cliente: {fileID: 438716017}
   referenciaComida: {fileID: 1643127306}
 --- !u!65 &330585553
@@ -1921,7 +1922,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012058216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.064, y: 0.9, z: -2.388}
+  m_LocalPosition: {x: 5.744, y: 0.9, z: -2.388}
   m_LocalScale: {x: 0.40358883, y: 0.40358883, z: 0.40358883}
   m_ConstrainProportionsScale: 0
   m_Children: []
