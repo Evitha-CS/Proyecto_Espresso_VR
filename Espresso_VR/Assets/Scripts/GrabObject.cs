@@ -31,7 +31,7 @@ public class GrabObject : MonoBehaviour
             punteroImage.SetActive(false);
             // Actualizar la barra de carga
             cargaImage.fillAmount = tiempoTranscurrido / tiempoCarga;
-            Debug.Log("Tocando Objeto");
+            //Debug.Log("Tocando Objeto");
 
             if (tiempoTranscurrido >= tiempoCarga)
             {
@@ -41,6 +41,8 @@ public class GrabObject : MonoBehaviour
                 objetoAgarrado = true;
             }
 
+        }else{
+            punteroImage.SetActive(true);
         }
 
         if (objetoAEliminar)
@@ -49,10 +51,11 @@ public class GrabObject : MonoBehaviour
             tiempoTranscurridoEliminar += Time.deltaTime;
             punteroImage.SetActive(false);
             cargaImage.fillAmount = tiempoTranscurridoEliminar / tiempoRestanteEliminar;
-            Debug.Log("Eliminando Objeto");
+            //Debug.Log("Eliminando Objeto");
 
             if (tiempoTranscurridoEliminar >= tiempoRestanteEliminar)
             {
+                StartCoroutine(Respawn());
                 EliminarObjeto();
                 cargaImage.fillAmount = 0f;
                 objetoAEliminar = false;
@@ -133,13 +136,13 @@ public class GrabObject : MonoBehaviour
     {
         objetoInteractuableTransform.SetParent(transform); // Hacer que el objeto interactuable sea hijo del objeto original
         nombreObjeto = objetoInteractuableTransform.name;
-        Debug.Log("Has agarrado un " + nombreObjeto);
+        //Debug.Log("Has agarrado un " + nombreObjeto);
 
     }
 
     void EliminarObjeto()
     {
-        Debug.Log("Estoy en basurero y soy " + objetoInteractuableTransform);
+        //Debug.Log("Estoy en basurero y soy " + objetoInteractuableTransform);
 
         Destroy(objetoInteractuableTransform.gameObject);
         punteroImage.SetActive(true);
@@ -147,7 +150,7 @@ public class GrabObject : MonoBehaviour
     }
     void RestablecerEstado()
     {
-        Debug.Log("RESTABLECIENDO ESTADOS!");
+        //Debug.Log("RESTABLECIENDO ESTADOS!");
 
         objetoTocado = false;
         objetoAgarrado = false;
@@ -156,13 +159,13 @@ public class GrabObject : MonoBehaviour
     }
     void RestablecerReferencias()
     {
-        Debug.Log("RESTABLECIENDO REFERENCIAS!");
+        //Debug.Log("RESTABLECIENDO REFERENCIAS!");
         objetoInteractuableTransform = null;
         objetoInteractuableCollider = null;
     }
 
     // Buscar objeto hijo
-    string GetHijo()
+    /*string GetHijo()
     {
         if (transform.Find("croissant"))
             return "croissant";
@@ -173,7 +176,7 @@ public class GrabObject : MonoBehaviour
         if (transform.Find("te"))
             return "té";
         return null;
-    }
+    }*/
 
     //Esperar y respawnear objetos
     IEnumerator Respawn()

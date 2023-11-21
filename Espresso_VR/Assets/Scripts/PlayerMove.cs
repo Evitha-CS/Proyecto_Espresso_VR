@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(vrCamera.eulerAngles.x >= toggleAngle && vrCamera.eulerAngles.x < 90.00f)
         {
             moveForward = true;
@@ -24,5 +25,7 @@ public class PlayerMove : MonoBehaviour
         {
             transform.position = transform.position + Camera.main.transform.forward * playerSpeed * Time.deltaTime;
         }
+
+        
     }
 }
