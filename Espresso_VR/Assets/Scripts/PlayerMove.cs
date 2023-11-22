@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public int playerSpeed;
+    public float playerSpeed;
     public Transform vrCamera;
     public float toggleAngle;
     
