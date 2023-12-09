@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public int playerSpeed;
-    public float rotationSpeed; // Nueva variable para controlar la velocidad de rotación
+    public float playerSpeed;
     public Transform vrCamera;
     public float toggleAngle;
     
     public bool moveForward;
 
     private Rigidbody rb;
-    public Transform playerModel; // Referencia al modelo 3D
+    
 
     void Start()
     {
@@ -40,12 +39,7 @@ public class PlayerMove : MonoBehaviour
             rb.MovePosition(rb.position + forward * playerSpeed * Time.deltaTime);
         }
 
-        // Calcula la rotación en el plano Y (vertical) de la cámara
-        float yRotation = vrCamera.eulerAngles.y;
-
-        // Aplica la rotación al objeto hijo (modelo 3D) 
-        playerModel.rotation = Quaternion.Slerp(playerModel.rotation, Quaternion.Euler(0, yRotation, 0), rotationSpeed * Time.deltaTime);
-
     }
 
 }
+

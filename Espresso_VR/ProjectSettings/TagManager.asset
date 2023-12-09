@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - interactable
+  - Fluid
+  - basurero
+  - cliente
   layers:
   - Default
   - TransparentFX
