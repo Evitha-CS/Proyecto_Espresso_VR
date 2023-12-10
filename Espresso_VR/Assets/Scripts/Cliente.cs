@@ -19,7 +19,30 @@ public class Cliente : MonoBehaviour
     void ElegirObjeto()
     {
         // Lista de posibles objetos que el cliente puede elegir
-        string[] objetosDisponibles = { "donut", "te", "cupcake", "croissant" };
+        string[] objetosDisponibles = { 
+            "limonada",
+            "jugo de naranja",
+            "galletas",
+            "galletas de chocolate",
+            "donut crema", 
+            "donut chocolate", 
+            "donut strawberry", 
+            "cupcake", 
+            "cupcake redvelvet", 
+            "cupcake oreo", 
+            "cupcake cherry", 
+            "croissant", 
+            "pack sandwich", 
+            "frenchtoast con aceitunas", 
+            "frenchtoast con huevo", 
+            "frenchtoast de naranja", 
+            "frenchtoast tomate cherry",
+            "cheesecake blueberry",
+            "cheesecake chocolate",
+            "cheesecake limon",
+            "cheesecake strawberry",
+            "espresso"
+            };
 
         // Elegir un objeto diferente al anteriormente seleccionado
         do

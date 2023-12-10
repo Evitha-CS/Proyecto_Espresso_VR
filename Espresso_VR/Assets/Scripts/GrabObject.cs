@@ -226,61 +226,111 @@ public class GrabObject : MonoBehaviour
         {
             case "limonada":
                 prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/limonada");
-                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-0.06508446f, -0.9267671f, 0.206365f), Quaternion.identity, referenciaComida.transform);
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-6.330084f, 0.5366147f, -0.7604402f), Quaternion.identity, referenciaComida.transform);
                 break;
 
             case "jugo de naranja":
                 prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/jugo de naranja");
-                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-0.06524086f, -0.9265893f, 0.6109225f), Quaternion.identity, referenciaComida.transform);
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-6.330241f, 0.5367925f, -0.3558828f), Quaternion.identity, referenciaComida.transform);
                 break;
 
             case "galletas":
                 prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/galletas");
-                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(7.145f, -0.996f, 1.85f), Quaternion.identity, referenciaComida.transform);
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(0.8800001f, 0.4673818f, 0.8831947f), Quaternion.identity, referenciaComida.transform);
                 break;
 
             case "galletas de chocolate":
                 prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/galletas de chocolate");
-                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(6.625f, -0.996f, 1.85f), Quaternion.identity, referenciaComida.transform);
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(0.3600001f, 0.4673818f, 0.8831947f), Quaternion.identity, referenciaComida.transform);
                 break;
 
             case "donut crema":
                 prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/donut crema");
-                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-3.330679f, 0.554322f, 5.076561f), Quaternion.identity, referenciaComida.transform);
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-9.595679f, 2.017704f, 4.109756f), Quaternion.identity, referenciaComida.transform);
                 break;
 
             case "donut chocolate":
                 prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/donut chocolate");
-                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-3.671754f, 0.5537694f, 5.086428f), Quaternion.identity, referenciaComida.transform);
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-9.936754f, 2.017151f, 4.119623f), Quaternion.identity, referenciaComida.transform);
                 break;
 
             case "donut strawberry":
                 prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/donut strawberry");
-                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-4.037201f, 0.5541945f, 5.098f), Quaternion.identity, referenciaComida.transform);
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-10.3022f, 2.017576f, 4.131195f), Quaternion.identity, referenciaComida.transform);
                 break;
 
             case "cupcake":
                 prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/cupcake");
-                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-3.297068f, 0.8456686f, 5f), Quaternion.identity, referenciaComida.transform);
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-9.562068f, 2.30905f, 4.033195f), Quaternion.identity, referenciaComida.transform);
                 break;
 
             case "cupcake redvelvet":
                 prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/cupcake redvelvet");
-                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-3.826f, 0.8460448f, 5f), Quaternion.identity, referenciaComida.transform);
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-10.091f, 2.309427f, 4.033195f), Quaternion.identity, referenciaComida.transform);
                 break;
 
             case "cupcake oreo":
                 prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/cupcake oreo");
-                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-3.57f, 0.8466511f, 5f), Quaternion.identity, referenciaComida.transform);
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-9.835f, 2.310033f, 4.033195f), Quaternion.identity, referenciaComida.transform);
                 break;
             case "cupcake cherry":
                 prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/cupcake cherry");
-                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-4.099f, 0.8451772f, 5f), Quaternion.identity, referenciaComida.transform);
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-10.364f, 2.308559f, 4.033195f), Quaternion.identity, referenciaComida.transform);
                 break;
 
             case "croissant":
                 prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/croissant");
-                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-0.42f, -0.1f, 5.097f), Quaternion.identity, referenciaComida.transform);
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-6.685f, 1.363382f, 4.130195f), Quaternion.identity, referenciaComida.transform);
+                break;
+
+            case "pack sandwich":
+                prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/pack sandwich");
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-6.186f, 1.2f, 0.628f), Quaternion.identity, referenciaComida.transform);
+                break;
+
+            case "frenchtoast con aceitunas":
+                prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/frenchtoast con aceitunas");
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-6.444f, 1.187f, -0.268f), Quaternion.identity, referenciaComida.transform);
+                break;
+
+            case "frenchtoast con huevo":
+                prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/frenchtoast con huevo");
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-6.444f, 1.187f, -0.74f), Quaternion.identity, referenciaComida.transform);
+                break;
+
+            case "frenchtoast de naranja":
+                prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/frenchtoast de naranja");
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-6.007f, 1.187f, -0.74f), Quaternion.identity, referenciaComida.transform);
+                break;
+
+            case "frenchtoast tomate cherry":
+                prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/frenchtoast tomate cherry");
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-6.007f, 1.187f, -0.268f), Quaternion.identity, referenciaComida.transform);
+                break;
+
+            case "cheesecake blueberry":
+                prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/cheesecake blueberry");
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-6.071f, 0.57f, 0.468f), Quaternion.identity, referenciaComida.transform);
+                break;
+
+            case "cheesecake chocolate":
+                prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/cheesecake chocolatte");
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-6.088f, 0.57f, 0.835f), Quaternion.identity, referenciaComida.transform);
+                break;
+
+            case "cheesecake limon":
+                prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/cheesecake limon");
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-6.42f, 0.57f, 0.756f), Quaternion.identity, referenciaComida.transform);
+                break;
+
+            case "cheesecake strawberry":
+                prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/cheesecake strawberry");
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-6.356f, 0.57f, 0.469f), Quaternion.identity, referenciaComida.transform);
+                break;
+
+            case "espresso":
+                prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/espresso");
+                nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-10.532f, 1.403f, -0.305f), Quaternion.identity, referenciaComida.transform);
                 break;
         }
 
