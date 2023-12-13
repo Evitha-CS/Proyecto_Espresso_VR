@@ -1405,8 +1405,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objetoCorrecto: 
+  ObjetoSolicitado: {fileID: 0}
   ResultadoEntrega: {fileID: 0}
-  tiempoInterfaz: 0
+  tiempoInterfaz: 2
 --- !u!136 &-2473628929218502262
 CapsuleCollider:
   m_ObjectHideFlags: 0
