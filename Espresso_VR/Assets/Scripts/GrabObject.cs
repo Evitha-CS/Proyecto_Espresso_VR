@@ -172,7 +172,7 @@ public class GrabObject : MonoBehaviour
     {
         objetoInteractuableTransform.SetParent(transform); // Hacer que el objeto interactuable sea hijo del objeto original
         nombreObjeto = objetoInteractuableTransform.name;
-        //Debug.Log("Has agarrado un " + nombreObjeto);
+        Debug.Log("Has agarrado un " + nombreObjeto);
 
     }
 
