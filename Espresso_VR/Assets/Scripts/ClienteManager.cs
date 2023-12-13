@@ -30,7 +30,7 @@ public class ClienteManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Hay demasiados clientes!");
+                //Debug.Log("Hay demasiados clientes!");
             }
         }
     }
@@ -38,7 +38,7 @@ public class ClienteManager : MonoBehaviour
     int CountClientesEnEscena()
     {
         // Contar cuántos objetos en la escena tienen el tag "cliente"
-        Debug.Log("Contando clientes");
+        //Debug.Log("Contando clientes");
         GameObject[] clientes = GameObject.FindGameObjectsWithTag("cliente");
         return clientes.Length;
     }
