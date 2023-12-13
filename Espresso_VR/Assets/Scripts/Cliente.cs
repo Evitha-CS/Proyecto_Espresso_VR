@@ -7,7 +7,7 @@ public class Cliente : MonoBehaviour
 {
     public string objetoCorrecto;  // Define el objeto correcto que el cliente espera recibir
     private string objetoAnterior; //Para evitar que se elija el mismo objeto consecutivamente
-    private TextMeshProUGUI ObjetoSolicitado;
+    public TextMeshProUGUI ObjetoSolicitado;
     public TextMeshProUGUI ResultadoEntrega;
     public float tiempoInterfaz;
 
@@ -16,6 +16,7 @@ public class Cliente : MonoBehaviour
         Transform canvas = transform.Find("Canvas");
         Transform tmp = canvas.Find("Text (TMP)");
         ObjetoSolicitado = tmp.GetComponent<TextMeshProUGUI>();
+        ResultadoEntrega = GameObject.Find("Text (TMP) (1)").GetComponent<TextMeshProUGUI>();
         ElegirObjeto();  // Al inicio, el cliente elige un objeto aleatorio
 
     }
