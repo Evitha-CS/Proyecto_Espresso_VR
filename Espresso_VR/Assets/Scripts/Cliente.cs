@@ -9,18 +9,42 @@ public class Cliente : MonoBehaviour
     private string objetoAnterior; //Para evitar que se elija el mismo objeto consecutivamente
     public TextMeshProUGUI ObjetoSolicitado;
     public TextMeshProUGUI ResultadoEntrega;
+    public ScoreManager player;
     public float tiempoInterfaz;
     private MovimientoCliente scriptMovimiento;
+    private Transform canvas;
 
     void Start()
     {
-        Transform canvas = transform.Find("Canvas");
+        canvas = transform.Find("Canvas");
         Transform tmp = canvas.Find("Text (TMP)");
         ObjetoSolicitado = tmp.GetComponent<TextMeshProUGUI>();
         ResultadoEntrega = GameObject.Find("Text (TMP) (1)").GetComponent<TextMeshProUGUI>();
+        GameObject playerObject = GameObject.Find("Player");
+        player = playerObject.GetComponent<ScoreManager>();
         scriptMovimiento = GetComponent<MovimientoCliente>();
         ElegirObjeto();  // Al inicio, el cliente elige un objeto aleatorio
 
+    }
+
+    void Update()
+    {
+        GirarHaciaCamara(canvas, Camera.main.transform);
+    }
+
+    public void GirarHaciaCamara(Transform objeto, Transform camara)
+    {
+        // Obtener la dirección desde el objeto hacia la cámara
+        Vector3 direccionCamara = camara.position - objeto.position;
+
+        // Ignorar la rotación en Y para que el objeto gire solo en su eje vertical
+        direccionCamara.y = 0;
+
+        // Obtener la rotación necesaria para que el objeto apunte hacia la cámara
+        Quaternion rotacionObjeto = Quaternion.LookRotation(direccionCamara);
+
+        // Aplicar la rotación al objeto
+        objeto.rotation = rotacionObjeto;
     }
 
     void ElegirObjeto()
@@ -74,12 +98,15 @@ public class Cliente : MonoBehaviour
         {
             Debug.Log("¡Entrega exitosa! El cliente recibió el objeto correcto: " + objetoCorrecto);
             ResultadoEntrega.text = "¡Entrega exitosa! El cliente recibió el objeto correcto: " + objetoCorrecto;
-            // Hacer que el cliente se vaya
+            // Aumentar puntuación
+            player.ActualizarPuntuación(1);
         }
         else
         {
             Debug.Log("Entrega fallida. El cliente esperaba: " + objetoCorrecto + ", pero recibió: " + objetoEntregado);
             ResultadoEntrega.text = "Entrega fallida. El cliente esperaba: " + objetoCorrecto + ", pero recibió: " + objetoEntregado;
+            // Disminuir puntuación
+            player.ActualizarPuntuación(-1);
         }
         // Mostrar el mensaje de éxito y luego desaparecer la interfaz
         ResultadoEntrega.gameObject.SetActive(true);

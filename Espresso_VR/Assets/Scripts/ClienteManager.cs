@@ -6,11 +6,13 @@ public class ClienteManager : MonoBehaviour
 {
     public GameObject[] prefabsClientes;
     public Transform[] puntosSpawn;
+    public ScoreManager player;
     public float tiempoEntreClientes = 5f;
-    public int maxClientes = 4;
 
     void Start()
     {
+        GameObject playerObject = GameObject.Find("Player");
+        player = playerObject.GetComponent<ScoreManager>();
         StartCoroutine(GenerarClientes());
     }
 
@@ -21,7 +23,7 @@ public class ClienteManager : MonoBehaviour
             yield return new WaitForSeconds(tiempoEntreClientes);
 
             // Verificar si hay menos de maxClientes en la escena con el tag "Cliente"
-            if (CountClientesEnEscena() < maxClientes)
+            if (CountClientesEnEscena() < MaxClientes() )
             {
                 Debug.Log("Spawneando cliente");
                 GameObject clientePrefab = prefabsClientes[Random.Range(0, prefabsClientes.Length)];
@@ -41,6 +43,25 @@ public class ClienteManager : MonoBehaviour
         //Debug.Log("Contando clientes");
         GameObject[] clientes = GameObject.FindGameObjectsWithTag("cliente");
         return clientes.Length;
+    }
+
+    int MaxClientes()
+    {
+        if(player.puntuacion<6)
+        {
+            return 2;
+        }
+        else
+        {
+            if(player.puntuacion<=20)
+            {
+                return (player.puntuacion/2);
+            }
+            else
+            {
+                return 10;
+            }
+        }
     }
 }
 
