@@ -8,6 +8,9 @@ TagManager:
   - Fluid
   - basurero
   - cliente
+  - flecha_1
+  - flecha_2
+  - flecha_3
   layers:
   - Default
   - TransparentFX
