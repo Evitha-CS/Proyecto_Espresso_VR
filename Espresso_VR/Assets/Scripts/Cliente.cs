@@ -9,6 +9,7 @@ public class Cliente : MonoBehaviour
     private string objetoAnterior; //Para evitar que se elija el mismo objeto consecutivamente
     public TextMeshProUGUI ObjetoSolicitado;
     public TextMeshProUGUI ResultadoEntrega;
+    public ScoreManager player;
     public float tiempoInterfaz;
     private MovimientoCliente scriptMovimiento;
     private Transform canvas;
@@ -19,6 +20,8 @@ public class Cliente : MonoBehaviour
         Transform tmp = canvas.Find("Text (TMP)");
         ObjetoSolicitado = tmp.GetComponent<TextMeshProUGUI>();
         ResultadoEntrega = GameObject.Find("Text (TMP) (1)").GetComponent<TextMeshProUGUI>();
+        GameObject playerObject = GameObject.Find("Player");
+        player = playerObject.GetComponent<ScoreManager>();
         scriptMovimiento = GetComponent<MovimientoCliente>();
         ElegirObjeto();  // Al inicio, el cliente elige un objeto aleatorio
 
@@ -95,12 +98,15 @@ public class Cliente : MonoBehaviour
         {
             Debug.Log("¡Entrega exitosa! El cliente recibió el objeto correcto: " + objetoCorrecto);
             ResultadoEntrega.text = "¡Entrega exitosa! El cliente recibió el objeto correcto: " + objetoCorrecto;
-            // Hacer que el cliente se vaya
+            // Aumentar puntuación
+            player.ActualizarPuntuación(1);
         }
         else
         {
             Debug.Log("Entrega fallida. El cliente esperaba: " + objetoCorrecto + ", pero recibió: " + objetoEntregado);
             ResultadoEntrega.text = "Entrega fallida. El cliente esperaba: " + objetoCorrecto + ", pero recibió: " + objetoEntregado;
+            // Disminuir puntuación
+            player.ActualizarPuntuación(-1);
         }
         // Mostrar el mensaje de éxito y luego desaparecer la interfaz
         ResultadoEntrega.gameObject.SetActive(true);
