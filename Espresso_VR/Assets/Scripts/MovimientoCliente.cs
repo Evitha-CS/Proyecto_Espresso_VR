@@ -8,12 +8,12 @@ public class MovimientoCliente : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        EstablecerNuevoDestino();
+        EstablecerNuevoDestino((new Vector3(-5.3f, 0f, 2.3f)));
     }
 
-    public void EstablecerNuevoDestino()
+    public void EstablecerNuevoDestino(Vector3 posicion)
     {
         // Establecer el nuevo destino para el NavMeshAgent
-        navMeshAgent.SetDestination((new Vector3(-5.3f, 0f, 2.3f)));
+        navMeshAgent.SetDestination(posicion);
     }
 }

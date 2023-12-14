@@ -315,7 +315,7 @@ public class GrabObject : MonoBehaviour
                 break;
 
             case "cheesecake chocolate":
-                prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/cheesecake chocolatte");
+                prefabObjeto = Resources.Load<GameObject>("CoffeeShopStarterPack/Prefabs/cheesecake chocolate");
                 nuevoObjeto = Instantiate(prefabObjeto, new Vector3(-6.088f, 0.57f, 0.835f), Quaternion.identity, referenciaComida.transform);
                 break;
 

@@ -10,7 +10,7 @@ public class Cliente : MonoBehaviour
     public TextMeshProUGUI ObjetoSolicitado;
     public TextMeshProUGUI ResultadoEntrega;
     public float tiempoInterfaz;
-    private MovimientoCliente scriptMovimiento;
+    private UnityEngine.AI.NavMeshAgent navMeshAgent;
 
     void Start()
     {
@@ -18,7 +18,7 @@ public class Cliente : MonoBehaviour
         Transform tmp = canvas.Find("Text (TMP)");
         ObjetoSolicitado = tmp.GetComponent<TextMeshProUGUI>();
         ResultadoEntrega = GameObject.Find("Text (TMP) (1)").GetComponent<TextMeshProUGUI>();
-        scriptMovimiento = GetComponent<MovimientoCliente>();
+        navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         ElegirObjeto();  // Al inicio, el cliente elige un objeto aleatorio
 
     }
@@ -75,19 +75,18 @@ public class Cliente : MonoBehaviour
             Debug.Log("¡Entrega exitosa! El cliente recibió el objeto correcto: " + objetoCorrecto);
             ResultadoEntrega.text = "¡Entrega exitosa! El cliente recibió el objeto correcto: " + objetoCorrecto;
             // Hacer que el cliente se vaya
+            navMeshAgent.SetDestination((new Vector3(-5.3f, 0f, 2.3f)));
         }
         else
         {
             Debug.Log("Entrega fallida. El cliente esperaba: " + objetoCorrecto + ", pero recibió: " + objetoEntregado);
             ResultadoEntrega.text = "Entrega fallida. El cliente esperaba: " + objetoCorrecto + ", pero recibió: " + objetoEntregado;
         }
-        // Mostrar el mensaje de éxito y luego desaparecer la interfaz
         ResultadoEntrega.gameObject.SetActive(true);
         StartCoroutine(DesaparecerDespuesDeTiempo(tiempoInterfaz));
-        // Hacer que el cliente se vaya
-        scriptMovimiento.EstablecerNuevoDestino((new Vector3(-2.762f, 0f, 6.256f)));
-        StartCoroutine(DespawnearCliente(5f));
-
+        Debug.Log("Estoy aquí");
+        // Después de la entrega, el cliente elige otro objeto
+        ElegirObjeto();
     }
 
     IEnumerator DesaparecerDespuesDeTiempo(float tiempo)
@@ -97,19 +96,7 @@ public class Cliente : MonoBehaviour
         yield return new WaitForSeconds(tiempo);
         Debug.Log("Desapareciendo interfaz");
         // Desactivar el objeto del texto o establecer el texto en una cadena vacía
-        ResultadoEntrega.text = "";
-    }
-
-    IEnumerator DespawnearCliente(float tiempo)
-    {
-        Debug.Log("NO QUIERO MORIR!!!");
-        //Se le quita la referencia al TMP para que no se destruya
-        //ResultadoEntrega=null;
-        // Esperar el tiempo especificado
-        yield return new WaitForSeconds(tiempo);
-        Debug.Log("*muerto*");
-        // Destruir al cliente
-        Destroy(gameObject);
+        ResultadoEntrega.gameObject.SetActive(false);
     }
 }
 
