@@ -11,16 +11,37 @@ public class Cliente : MonoBehaviour
     public TextMeshProUGUI ResultadoEntrega;
     public float tiempoInterfaz;
     private MovimientoCliente scriptMovimiento;
+    private Transform canvas;
 
     void Start()
     {
-        Transform canvas = transform.Find("Canvas");
+        canvas = transform.Find("Canvas");
         Transform tmp = canvas.Find("Text (TMP)");
         ObjetoSolicitado = tmp.GetComponent<TextMeshProUGUI>();
         ResultadoEntrega = GameObject.Find("Text (TMP) (1)").GetComponent<TextMeshProUGUI>();
         scriptMovimiento = GetComponent<MovimientoCliente>();
         ElegirObjeto();  // Al inicio, el cliente elige un objeto aleatorio
 
+    }
+
+    void Update()
+    {
+        GirarHaciaCamara(canvas, Camera.main.transform);
+    }
+
+    public void GirarHaciaCamara(Transform objeto, Transform camara)
+    {
+        // Obtener la dirección desde el objeto hacia la cámara
+        Vector3 direccionCamara = camara.position - objeto.position;
+
+        // Ignorar la rotación en Y para que el objeto gire solo en su eje vertical
+        direccionCamara.y = 0;
+
+        // Obtener la rotación necesaria para que el objeto apunte hacia la cámara
+        Quaternion rotacionObjeto = Quaternion.LookRotation(direccionCamara);
+
+        // Aplicar la rotación al objeto
+        objeto.rotation = rotacionObjeto;
     }
 
     void ElegirObjeto()
