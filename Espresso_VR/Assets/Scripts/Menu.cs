@@ -1,39 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-
-    public Image cargaImage; // Referencia al objeto Image que representa la barra de carga
+    public Image cargaImage;
     public GameObject punteroImage;
     public float tiempoCarga = 2f;
     private float tiempoTranscurrido = 0f;
     private bool jugar = false;
-    public Button flecha_2;
-    public Button flecha_3;
-    public TextMeshProUGUI texto_1;
-    public TextMeshProUGUI texto_2;
-     public TextMeshProUGUI texto_3;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
+    public GameObject[] textos;
+    private int indiceTextoActual = 0;
 
-    // Update is called once per frame
     void Update()
     {
         if (jugar)
         {
             tiempoTranscurrido += Time.deltaTime;
             punteroImage.SetActive(false);
-            // Actualizar la barra de carga
             cargaImage.fillAmount = tiempoTranscurrido / tiempoCarga;
-            Debug.Log("Tocando Objeto");
 
             if (tiempoTranscurrido >= tiempoCarga)
             {
@@ -41,47 +27,56 @@ public class Menu : MonoBehaviour
                 punteroImage.SetActive(true);
                 cargaImage.fillAmount = 0f;
             }
-
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("flecha_1") && texto_2.gameObject.activeSelf)
+        if (other.CompareTag("flecha_1"))
         {
-            texto_1.gameObject.SetActive(true);
-            texto_2.gameObject.SetActive(false);
+            if (indiceTextoActual > 0)
+            {
+                MostrarTextoAnterior();
+            }
         }
-         if (other.CompareTag("flecha_1") && texto_3.gameObject.activeSelf)
+        else if (other.CompareTag("flecha_2"))
         {
-            texto_2.gameObject.SetActive(true);
-            texto_3.gameObject.SetActive(false);
-            flecha_3.gameObject.SetActive(false);
-            flecha_2.gameObject.SetActive(true);
+            if (indiceTextoActual < textos.Length - 1)
+            {
+                MostrarTextoSiguiente();
+            }
         }
-        if (other.CompareTag("flecha_2") && texto_1.gameObject.activeSelf)
+        else if (other.CompareTag("interactable"))
         {
-            texto_1.gameObject.SetActive(false);
-            texto_2.gameObject.SetActive(true);
-        }
-        if (other.CompareTag("flecha_2") && texto_2.gameObject.activeSelf)
-        {
-            texto_2.gameObject.SetActive(false);
-            texto_3.gameObject.SetActive(true);
-            flecha_2.gameObject.SetActive(false);
-            flecha_3.gameObject.SetActive(true);
-        }
-        if (other.CompareTag("flecha_3") && texto_2.gameObject.activeSelf)
-        {
-            texto_2.gameObject.SetActive(false);
-            texto_3.gameObject.SetActive(true);
-        }
-        if (other.CompareTag("interactable"))
-        {
-            CambiarEscena("SampleScene");
+            jugar = true;
+            //CambiarEscena("SampleScene");
         }
 
-        jugar = false;
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("interactable"))
+        {
+            jugar = false;
+            punteroImage.SetActive(true);
+            tiempoTranscurrido = 0f;
+            cargaImage.fillAmount = 0f;
+        }
+    }
+
+    public void MostrarTextoSiguiente()
+    {
+        textos[indiceTextoActual].SetActive(false);
+        indiceTextoActual = Mathf.Min(indiceTextoActual + 1, textos.Length - 1);
+        textos[indiceTextoActual].SetActive(true);
+    }
+
+    public void MostrarTextoAnterior()
+    {
+        textos[indiceTextoActual].SetActive(false);
+        indiceTextoActual = Mathf.Max(indiceTextoActual - 1, 0);
+        textos[indiceTextoActual].SetActive(true);
     }
 
     void CambiarEscena(string Escena)
