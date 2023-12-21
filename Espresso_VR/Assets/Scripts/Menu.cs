@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Menu : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Menu : MonoBehaviour
     public float tiempoCarga = 2f;
     private float tiempoTranscurrido = 0f;
     private bool jugar = false;
+    public TextMeshProUGUI button_text;
 
     public GameObject[] textos;
     private int indiceTextoActual = 0;
@@ -23,6 +25,7 @@ public class Menu : MonoBehaviour
 
             if (tiempoTranscurrido >= tiempoCarga)
             {
+                button_text.text = "Cargando...";
                 CambiarEscena("SampleScene");
                 punteroImage.SetActive(true);
                 cargaImage.fillAmount = 0f;

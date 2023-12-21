@@ -1981,6 +1981,7 @@ MonoBehaviour:
   cargaImage: {fileID: 534198377}
   punteroImage: {fileID: 723680928}
   tiempoCarga: 2
+  button_text: {fileID: 566479134}
   textos:
   - {fileID: 1480085987}
   - {fileID: 1974780274}
@@ -2329,9 +2330,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!136 &2067786379
 CapsuleCollider:
   m_ObjectHideFlags: 0
