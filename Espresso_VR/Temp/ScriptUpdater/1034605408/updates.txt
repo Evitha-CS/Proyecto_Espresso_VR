@@ -1,1 +1,0 @@
-Temp/ScriptUpdater/1034605408\928408710_Cliente.cs => Assets/Scripts/Cliente.cs
