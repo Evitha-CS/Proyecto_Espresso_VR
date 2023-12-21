@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GrabObject : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class GrabObject : MonoBehaviour
     private string nombreObjeto;
     public Cliente cliente;
     public GameObject referenciaComida;
+    public TextMeshProUGUI objetoEnLaMano;
     private GameObject prefabObjeto = null;
 
     void Update()
@@ -173,6 +175,7 @@ public class GrabObject : MonoBehaviour
     {
         objetoInteractuableTransform.SetParent(transform); // Hacer que el objeto interactuable sea hijo del objeto original
         nombreObjeto = objetoInteractuableTransform.name;
+        objetoEnLaMano.text = "Llevas: " + nombreObjeto;
         //Debug.Log("Has agarrado un " + nombreObjeto);
 
     }
@@ -189,6 +192,7 @@ public class GrabObject : MonoBehaviour
     {
         //Debug.Log("RESTABLECIENDO ESTADOS!");
 
+        objetoEnLaMano.text = "Llevas: nada";
         objetoTocado = false;
         objetoAgarrado = false;
         tiempoTranscurrido = 0f;
