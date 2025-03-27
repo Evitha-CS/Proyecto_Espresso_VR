@@ -1,6 +1,6 @@
 # 🎮 Espresso VR – Realidad Virtual en Android 📱☕
 
-Proyecto académico para la asignatura de **Realidad Virtual** de la carrera **Ingeniería Civil en Informática** de la **Universidad del Bío-Bío**
+Proyecto académico para la asignatura de **Realidad Virtual** de la carrera **Ingeniería Civil en Informática** de la **Universidad del Bío-Bío**.
 
 ## 📌 Descripción del Proyecto
 
